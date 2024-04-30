@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./../styles/App.css";
 
 const App = () => {
-  const [index, setIndex] = useState(1);
+  const [step, setStep] = useState(1);
 
   const [inputData, setInputData] = useState({
     first_name: "",
@@ -24,18 +24,18 @@ const App = () => {
 
   const handleNext = (e) => {
     e.preventDefault();
-    setIndex((idx) => idx + 1);
+    setStep((idx) => idx + 1);
   };
 
   const handleBack = (e) => {
     e.preventDefault();
-    setIndex((idx) => idx - 1);
+    setStep((idx) => idx - 1);
   };
 
   function renderTable() {
-    if (index === 1) {
+    if (step === 1) {
       return (
-        <div>
+        <div id="step1">
           <h2> Customer Details</h2>
           <label htmlFor="first_name">First Name:</label>
           <input
@@ -54,9 +54,9 @@ const App = () => {
           />
         </div>
       );
-    } else if (index === 2) {
+    } else if (step === 2) {
       return (
-        <div>
+        <div id="step2">
           <h2>Car Details</h2>
           <label htmlFor="model">Brand:</label>
           <input
@@ -74,9 +74,9 @@ const App = () => {
           />
         </div>
       );
-    } else if (index === 3) {
+    } else if (step === 3) {
       return (
-        <div>
+        <div id="step3">
           <h2>Payment Details</h2>
           <label htmlFor="card_info">Card Information:</label>
           <input
@@ -111,12 +111,12 @@ const App = () => {
 
         {/* {index>0  && <button onClick={handleBack}>Previous</button>}
         {index  ? <button onClick={handleNext}>Next</button>:  <button>Submit</button>} */}
-        {index !== 3 ? (
+        {step !== 3 ? (
           <button onClick={handleNext}>Next</button>
         ) : (
           <button>Submit</button>
         )}
-        {index > 1 && <button onClick={handleBack}>Previous</button>}
+        {step > 1 && <button onClick={handleBack}>Previous</button>}
       </form>
     </div>
   );
